@@ -50,5 +50,50 @@
         </div>
     </div>
 
- 
+    <div class="card">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Formulir Cek Ongkir</h4>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                @csrf
+                <div class="form-row">
+                    <div class="col">
+                        <h5 class="text-muted">Asal Pengirim:</h5>
+                        <div class="form-group">
+                            <label for="">Provinsi</label>
+                            <select name="origin_province" id="" class="form-control">
+                                <option value="#">-</option>
+                               @foreach ($province as $key => $value)
+                                   <option value="{{$key}}">{{$value}}</option>
+                               @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Kota/Kabupaten</label>
+                            <select name="origin_city" id="" class="form-control">
+                                <option value="#">-</option>
+                            </select>
+                        </div>
+                        <h5 class="text-muted">Tujuan Pengirim:</h5>
+                        <div class="form-group">
+                            <label for="">Kota/Kabupaten</label>
+                            <select name="destination_city" id="destination_city" class="form-control">
+                                <option value="#">-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-muted">Pilih Expedisi:</h5>
+  
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     @endsection

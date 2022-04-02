@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use Illuminate\Http\Request;
+use App\Province;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $province = $this ->getProvince();
+
+        return view('home', compact('province'));
+    }
+
+    public function getProvince(){
+        return Province::pluck('title', 'code');
+    }
+
+    public function getCities($id){
+        return City::where('province_code', $id)->pluck('title', 'code');
     }
 }
