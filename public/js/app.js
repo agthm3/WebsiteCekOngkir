@@ -56148,7 +56148,7 @@ $("#destination_city").select2({
     url: "/api/cities",
     type: "POST",
     dataType: "JSON",
-    delay: 900,
+    delay: 150,
     data: function data(params) {
       return {
         _token: $('meta[name="csrf-token"]').attr("content"),

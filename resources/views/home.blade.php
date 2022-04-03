@@ -55,7 +55,7 @@
             <h4 class="my-0 font-weight-normal">Formulir Cek Ongkir</h4>
         </div>
         <div class="card-body">
-            <form action="" method="POST">
+            <form action="{{route('store')}}" method="POST">
                 @csrf
                 <div class="form-row">
                     <div class="col">
@@ -85,7 +85,12 @@
                     </div>
                     <div class="col">
                         <h5 class="text-muted">Pilih Expedisi:</h5>
-  
+                        @foreach ($courier as $key => $value)
+                            <div class="form-check form-check-inline">
+                                <input name="courier[]" type="checkbox" class="form-check-input" id="courier--{{$key}}" value="{{$value->code}}">
+                                <label for="courier--{{$key}}" class="form-check-label">{{$value ->title}}</label>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="form-row">
