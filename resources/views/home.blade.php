@@ -9,7 +9,7 @@
         </p>
     </div>
 
-    <div class="card-deck mb-3 text-center">
+    {{-- <div class="card-deck mb-3 text-center">
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">Free</h4>
@@ -48,7 +48,7 @@
                 <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="card">
         <div class="card-header">
