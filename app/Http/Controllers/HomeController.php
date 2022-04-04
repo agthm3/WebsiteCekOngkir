@@ -74,21 +74,34 @@ class HomeController extends Controller
     public function store(Request $request){
         $courier = $request ->input('courier');
         if($courier) {
-            $result = [];
+           $data = [
+               'origin' => $this->getCity($request->origin_city),
+               'destination'=> $this->getCity($request->destination_city),
+               'weight'=>1300,
+               'result' => []
+           ];
 
             foreach($courier as $row){
                 $ongkir =  RajaOngkir::ongkosKirim([
                 'origin' => $request ->origin_city, 
                 'destination' => $request-> destination_city, 
-                'weight' => 1300, 
+                'weight' => $data['weight'], 
                 'courier' =>$row
             ])->get();
 
-            $result[] = $ongkir;
+            $data['result'][] = $ongkir;
             }
+
+            return view('costs')->with($data);
         }
+
+        return redirect()->back();
       
 
-       return $result;
+    
+    }
+
+    public function getCity($code){
+        return City::where('code', $code)->first();
     }
 }
