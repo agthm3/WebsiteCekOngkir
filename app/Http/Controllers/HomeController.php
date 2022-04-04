@@ -6,6 +6,7 @@ use App\City;
 use App\Courier;
 use Illuminate\Http\Request;
 use App\Province;
+use Kavist\RajaOngkir\Facades\RajaOngkir;
 
 class HomeController extends Controller
 {
@@ -71,6 +72,23 @@ class HomeController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
+        $courier = $request ->input('courier');
+        if($courier) {
+            $result = [];
+
+            foreach($courier as $row){
+                $ongkir =  RajaOngkir::ongkosKirim([
+                'origin' => $request ->origin_city, 
+                'destination' => $request-> destination_city, 
+                'weight' => 1300, 
+                'courier' =>$row
+            ])->get();
+
+            $result[] = $ongkir;
+            }
+        }
+      
+
+       return $result;
     }
 }
